@@ -103,11 +103,13 @@ function questionChange() {
       answer.addEventListener("click", function () {
         // console.log(this.value);
         if (this.value == correctAnswer) {
-          rightWrong.removeAttribute("hidden");
-          rightWrong.textContent = "Good Job! You got it correct";
+            alert("Good Job! You got it correct")
+        //   rightWrong.removeAttribute("hidden");
+        //   rightWrong.textContent = "Good Job! You got it correct";
         } else {
-          rightWrong.removeAttribute("hidden");
-          rightWrong.textContent = "Sorry, that was incorrect";
+            alert("Sorry, that was incorrect")
+        //   rightWrong.removeAttribute("hidden");
+        //   rightWrong.textContent = "Sorry, that was incorrect";
           
           timeLeft -= penalty;
         }
@@ -121,7 +123,7 @@ function questionChange() {
   
         questionIndex++;
         if(questionIndex < 5){
-          setTimeout(questionChange, 1000)
+        questionChange()
         } else {
           endQuiz()
           
