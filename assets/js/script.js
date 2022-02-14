@@ -136,7 +136,15 @@ function questionChange() {
       location.href = "results.html";
   }
 
-//   show results on the screen
-finalScore.textContent = "Your final score is " + timeLeft
+//   how do I show results on the screen
+
+    finalScore.textContent = "Your final score is " + timeLeft
+
+    // enter initials and save them to local storage
+function scoreScreen() {
+    var nameInput = document.querySelector("input[name='task-name']").value;
+localStorage.setItem(nameInput.value)
+}
+
 
 startBtn.addEventListener("click", startQuiz)
