@@ -86,6 +86,8 @@ function hideWelcome(){
     }, 1000);
   }
 
+
+
 // question function here
 function questionChange() {
     var currentQuestion = questions[questionIndex];
@@ -119,9 +121,11 @@ function questionChange() {
   
         questionIndex++;
         if(questionIndex < 5){
-          questionChange()
+
+          setTimeout(questionChange, 1000)
         } else {
           endQuiz()
+          
         }
       });
     }
@@ -132,6 +136,6 @@ function questionChange() {
   }
 
 //   show results on the screen
-var finalScore = timerEl
+finalScore.textContent = "Your final score is " + timeLeft
 
 startBtn.addEventListener("click", startQuiz)

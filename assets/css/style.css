@@ -7,31 +7,37 @@
 body {
     background-color: black;
     color: white;
+    font-size: 18px;
 }
 
 .btn {
     color: white;
+    font-size: 30px;
 }
 
 .btn:hover {
     color: red;
+    font-size: 40px;
+    transition: all 500ms;
+}
+
+.answer {
+    border: none;
 }
 
 .answer:hover {
     color: red;
+    border: none;
 }
 
 #questions-answers {
     border: none;
     border-radius: 25px;
-    display: inline-block;
     font-size: 22px;
     line-height: 22px;
     margin: 56px 16px 16px 100px;
     padding: 14px 34px;
-    text-align: center;
     cursor: pointer;
-    
   }
   
   #question {
