@@ -121,7 +121,6 @@ function questionChange() {
   
         questionIndex++;
         if(questionIndex < 5){
-
           setTimeout(questionChange, 1000)
         } else {
           endQuiz()

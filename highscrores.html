@@ -12,20 +12,25 @@
 
 <!-- Fixed header here -->
 <body>
-    <header>High Scores! </header>
+    <div class="col-sm-8"> 
+        <a href="index.html"><button id="home" class="btn">Play Again!</button></a>
+      </div>
+      </div>
     
   
   <!-- view high scores -->
-  <div class="row" style="display: none">
-    <div class="col-md-12 center-align">
-      <div class="high-scores">
-        <h2 id="score-header">High Scores!</h2>
-        <ol id="score-list"></ol>
-        <button id="clear" class="btn">Clear high scores</button>
-        <button id="goback" class="btn" href="index.html">Play Again!</button>
+  <div class="text-center">
+    <div class="row">
+        <div class="col-md-12 center-align">
+          <div class="high-scores">
+            <h2 id="score-header">High Scores!</h2>
+            <ol id="score-list"></ol>
+            <button id="clear" class="btn">Clear high scores</button>
+          </div>
+        </div>
       </div>
-    </div>
   </div>
+  
     
   
     <script src="./assets/js/script.js"></script>
