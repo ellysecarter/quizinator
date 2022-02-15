@@ -5,7 +5,7 @@ var questionEl = document.getElementById("question");
 var rightWrong = document.getElementById("right-wrong");
 var finalScore = document.getElementById("final-score");
 var questionIndex = 0;
-var timeLeft = 101;
+var timeLeft = 91;
 var score = 0;
 var penalty = 10;
 
@@ -132,17 +132,22 @@ function questionChange() {
     }
   }
 
+//   how do I show results on the screen
+finalScore.textContent = "Your final score is " + timeLeft
+
+// timeLeft is showing the correct time in local storage
  var endQuiz = function() {
       location.href = "results.html";
+      localStorage.setItem("Score", timeLeft);
   }
 
-//   how do I show results on the screen
 
-    finalScore.textContent = "Your final score is " + timeLeft
 
     // enter initials and save them to local storage
 function scoreScreen() {
-    var nameInput = document.querySelector("input[name='task-name']").value;
+    var nameInput = document.getElementById("submit").value;
+    console.log(nameInput.value)
+
 localStorage.setItem(nameInput.value)
 }
 
