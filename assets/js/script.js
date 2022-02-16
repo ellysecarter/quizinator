@@ -4,6 +4,8 @@ var answerEl = document.getElementById("answers");
 var questionEl = document.getElementById("question");
 var rightWrong = document.getElementById("right-wrong");
 var finalScore = document.getElementById("final-score");
+var initialID = document.getElementById("initial");
+var submitBtn = document.getElementById("submit");
 var questionIndex = 0;
 var timeLeft = 91;
 var score = 0;
@@ -53,6 +55,8 @@ var questions = [
     },
   ];
 
+hideResults();
+
 // start quiz function
 var startQuiz = function () {
     countdownTimer();
@@ -65,6 +69,18 @@ var startQuiz = function () {
 //   hide the welcome page after the quiz starts to only show the questions
 function hideWelcome(){
     document.getElementById("starting-page").style.display = "none";
+}
+
+function hideResults(){
+    document.getElementById("results").style.display = "none";
+}
+
+function showResults(){
+    document.getElementById("results").style.display = "block";
+}
+
+function hideTimer(){
+    document.getElementById("timer").style.display = "none";
 }
 
 // timer function
@@ -90,6 +106,7 @@ function hideWelcome(){
 
 // question function here
 function questionChange() {
+    
     var currentQuestion = questions[questionIndex];
     questionEl.innerText = currentQuestion.q;
     for (var i = 0; i < currentQuestion.s.length; i++) {
@@ -124,32 +141,71 @@ function questionChange() {
         questionIndex++;
         if(questionIndex < 5){
         questionChange()
-        } else {
+        } 
+        else {
           endQuiz()
-          
         }
       });
     }
   }
 
-//   how do I show results on the screen
-finalScore.textContent = "Your final score is " + timeLeft
+
 
 // timeLeft is showing the correct time in local storage
  var endQuiz = function() {
-      location.href = "results.html";
+    showResults()
+    hideTimer()
       localStorage.setItem("Score", timeLeft);
+      localStorage.getItem("Score", timeLeft);
+      finalScore.textContent =  timeLeft
   }
 
 
 
     // enter initials and save them to local storage
 function scoreScreen() {
-    var nameInput = document.getElementById("submit").value;
-    console.log(nameInput.value)
+    var input = document.createElement("initial");
+    var body = document.body;
+    var finalScore = timeLeft;
+    var submit = document.createElement("button");
+  
+    initialID.textContent = finalScore;
+    body.appendChild(h2El);
+  
+    input.setAttribute("id", "initial");
+    input.placeholder = "Initials";
+    body.appendChild(input);
+  
+    submit.className = "questionChoices";
+    submit.textContent = "Submit";
+    body.appendChild(submit);
+  
+    submit.addEventListener("click", function (event) {
+      event.preventDefault();
+  
+      userInput.push(initials.value);
+      storeScore();
+      var Final = {
+        Name: userInput,
+        Score: timeLeft,
+      };
+      scores.push(Final);
+      localStorage.setItem("Quiz Score", JSON.stringify(scores));
+      scorePage();
+    });
+  }
+  
+//   {
+//     var nameInput = document.getElementById("submit").textContent;
+//     console.log(nameInput)
 
-localStorage.setItem(nameInput.value)
-}
+// localStorage.setItem(nameInput)
+// }
+
+function storeScore() {
+    localStorage.setItem("Name", [userInput]);
+    localStorage.setItem("Score", timeLeft);
+  }
 
 
 startBtn.addEventListener("click", startQuiz)
