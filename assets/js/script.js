@@ -66,7 +66,7 @@ var startQuiz = function () {
     hideWelcome();
   };
 
-//   hide the welcome page after the quiz starts to only show the questions
+
 function hideWelcome(){
     document.getElementById("starting-page").style.display = "none";
 }
@@ -164,46 +164,52 @@ function questionChange() {
 
     // enter initials and save them to local storage
 function scoreScreen() {
-    var input = document.createElement("initial");
-    var body = document.body;
-    var finalScore = timeLeft;
-    var submit = document.createElement("button");
+
+    var final = {
+            Name: initialID,
+            Score: timeLeft,
+          };
+
+    // var initialId = document.createElement("li");
+    // initialID.className = "initial";
+
+    // initialID.setAttribute("enter-name")
+    // initialID.textContent = finalScore;
+    // body.appendChild(initialID);
+
+    
+
+
+    // var body = document.body;
+    // var finalScore = timeLeft;
+    // var submit = submitBtn;
   
-    initialID.textContent = finalScore;
-    body.appendChild(h2El);
+    
   
-    input.setAttribute("id", "initial");
-    input.placeholder = "Initials";
-    body.appendChild(input);
+    // initialID.setAttribute("id", "initial");
   
-    submit.className = "questionChoices";
-    submit.textContent = "Submit";
-    body.appendChild(submit);
+    // body.appendChild(submit);
   
-    submit.addEventListener("click", function (event) {
-      event.preventDefault();
-  
-      userInput.push(initials.value);
-      storeScore();
-      var Final = {
-        Name: userInput,
-        Score: timeLeft,
-      };
-      scores.push(Final);
-      localStorage.setItem("Quiz Score", JSON.stringify(scores));
-      scorePage();
-    });
+    // submitBtn.addEventListener("click", function() {
+      
+    //   userInput.push(initials.value);
+    //   storeScore();
+    //   
+    //   scores.push(Final);
+    //   localStorage.setItem("Quiz Score", JSON.stringify(scores));
+    //   scorePage();
+    // });
   }
   
-//   {
-//     var nameInput = document.getElementById("submit").textContent;
-//     console.log(nameInput)
 
-// localStorage.setItem(nameInput)
-// }
+
+submitBtn.addEventListener('click', function() {
+    storeScore()
+    return initialID
+  });
 
 function storeScore() {
-    localStorage.setItem("Name", [userInput]);
+    localStorage.setItem("Name", [initialID]);
     localStorage.setItem("Score", timeLeft);
   }
 
