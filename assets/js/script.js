@@ -6,6 +6,8 @@ var rightWrong = document.getElementById("right-wrong");
 var finalScore = document.getElementById("final-score");
 var initialID = document.getElementById("initial");
 var submitBtn = document.getElementById("submit");
+var scores = JSON.parse(localStorage.getItem("Quiz Score")) || [];
+var userInput = [];
 var questionIndex = 0;
 var timeLeft = 91;
 var score = 0;
@@ -84,7 +86,7 @@ function hideTimer(){
 }
 
 // timer function
-  function countdownTimer() {
+function countdownTimer() {
     var timeInterval = setInterval(function () {
       if (questionIndex > 5 && timeLeft > 0) {
         timerEl.textContent = timeLeft;
@@ -120,11 +122,11 @@ function questionChange() {
       answer.addEventListener("click", function () {
         // console.log(this.value);
         if (this.value == correctAnswer) {
-            alert("Good Job! You got it correct")
+            // alert("Good Job! You got it correct")
         //   rightWrong.removeAttribute("hidden");
         //   rightWrong.textContent = "Good Job! You got it correct";
         } else {
-            alert("Sorry, that was incorrect")
+            // alert("Sorry, that was incorrect")
         //   rightWrong.removeAttribute("hidden");
         //   rightWrong.textContent = "Sorry, that was incorrect";
           
@@ -155,61 +157,31 @@ function questionChange() {
  var endQuiz = function() {
     showResults()
     hideTimer()
-      localStorage.setItem("Score", timeLeft);
-      localStorage.getItem("Score", timeLeft);
       finalScore.textContent =  timeLeft
+    
+      submitBtn.addEventListener("click", function(event) {
+        event.preventDefault();
+    
+        userInput.push(initialID.value);
+        storeScore();
+        var Final = {
+          Name: userInput,
+          Score: timeLeft
+        }
+        scores.push(Final);
+        localStorage.setItem("Quiz Score", JSON.stringify(scores));
+        scorePage();
+        })
+    
   }
-
-
-
-    // enter initials and save them to local storage
-function scoreScreen() {
-
-    var final = {
-            Name: initialID,
-            Score: timeLeft,
-          };
-
-    // var initialId = document.createElement("li");
-    // initialID.className = "initial";
-
-    // initialID.setAttribute("enter-name")
-    // initialID.textContent = finalScore;
-    // body.appendChild(initialID);
-
-    
-
-
-    // var body = document.body;
-    // var finalScore = timeLeft;
-    // var submit = submitBtn;
-  
-    
-  
-    // initialID.setAttribute("id", "initial");
-  
-    // body.appendChild(submit);
-  
-    // submitBtn.addEventListener("click", function() {
+          
       
-    //   userInput.push(initials.value);
-    //   storeScore();
-    //   
-    //   scores.push(Final);
-    //   localStorage.setItem("Quiz Score", JSON.stringify(scores));
-    //   scorePage();
-    // });
-  }
-  
-
-
-submitBtn.addEventListener('click', function() {
-    storeScore()
-    return initialID
-  });
+function scorePage() {
+        location.href = "highscrores.html"
+      }
 
 function storeScore() {
-    localStorage.setItem("Name", [initialID]);
+    localStorage.setItem("Name", [userInput]);
     localStorage.setItem("Score", timeLeft);
   }
 

@@ -74,3 +74,13 @@ body {
     justify-content: space-evenly;
     flex-wrap: wrap;
   }
+
+  #clear {
+      margin-top: 100px;
+  }
+
+  #score-header {
+      text-decoration: underline;
+      margin-bottom: 60px;
+  }
+
