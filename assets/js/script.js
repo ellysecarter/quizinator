@@ -6,6 +6,8 @@ var rightWrong = document.getElementById("right-wrong");
 var finalScore = document.getElementById("final-score");
 var initialID = document.getElementById("initial");
 var submitBtn = document.getElementById("submit");
+var showCorrect = document.getElementById("show-correct");
+var showIncorrect = document.getElementById("show-incorrect");
 var scores = JSON.parse(localStorage.getItem("Quiz Score")) || [];
 var userInput = [];
 var questionIndex = 0;
@@ -114,6 +116,21 @@ function countdownTimer() {
     }, 1000);
   }
 
+function correctBlink() {
+    var showCorrect = document.getElementById('show-correct');
+    setInterval(function() {
+        showCorrect.style.display = (showCorrect.style.display == 'none' ? 'Good Job! You got it correct' : 'none');
+    }, 1000);
+ }
+
+ function incorrectBlink() {
+    var showIncorrect = document.getElementById('show-incorrect');
+    setInterval(function() {
+        showIncorrect.style.display = (showIncorrect.style.display == 'none' ? 'Good Job! You got it correct' : 'none');
+    }, 1000);
+ }
+
+
 
 // question change function here
 function questionChange() {
@@ -130,12 +147,13 @@ function questionChange() {
       answerEl.appendChild(answer);
       answer.addEventListener("click", function () {
         if (this.value == correctAnswer) {
-          rightWrong.removeAttribute("hidden");
-          rightWrong.textContent = "Good Job! You got it correct";
+        //   rightWrong.removeAttribute("hidden");
+        //   rightWrong.textContent = "Good Job! You got it correct";
+        correctBlink()
         } else {
-          rightWrong.removeAttribute("hidden");
-          rightWrong.textContent = "Sorry, that was incorrect";
-          
+        //   rightWrong.removeAttribute("hidden");
+        //   rightWrong.textContent = "Sorry, that was incorrect";
+        incorrectBlink()
           timeLeft -= penalty;
         }
   
