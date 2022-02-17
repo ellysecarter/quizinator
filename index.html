@@ -17,16 +17,13 @@
         <a href="highscrores.html"><button id="scores" class="btn">View High Scores</button></a>  
       </div>
       <div class="col-sm-6 offset-sm-10">
-        <h2 id="timer">Time: <span id="countdown"></span></h2>
+        <h2 id="timer" style="display:none">Time: <span id="countdown"></span></h2>
       </div>
     </div>
   
   <!-- Quiz questions and answers -->
-    <div id="quiz">
       <div id="starting-page">
-        <div class="text-center">
-        <div class="row">
-          <div class="col-md-12">
+        <div class="row text-center col-md-12">
           <h1 id="title">Quizinator!</h1>
           <h2 id="title2">Do you have the knowledge?</h2>
           <p id="challenge">You have 90 seconds to answer the following code-related questions. <br />
@@ -34,32 +31,23 @@
           <br />
           <p id="challenge">Goodluck!</p>
           <button id="start" class="btn">Start Quiz!</button>
-        </div>
-        </div>
       </div>
     </div>
-  </div>
+  
   
     <div id="container">
     <div class="text-center">
-        <div class="row">
-            <div class="col-md-12" >
               <div id="questions-answers">
               <p id="question"></p>
-              <div class="col-md-12">
               <div id="answers"></div>
               <p hidden id="right-wrong" class="right-wrong"></p>
-              </div>
             </div> 
-          </div>
-        </div>
     </div>
   </div>
   
   
     <!-- Result page where you enter your initials -->
-    <div class="text-center" >
-      <div class="col-md-12">
+    <div class="text-center col-md-12">
         <div id="results">
           <h1 id="title">All  done!</h1>
           <p id="title">Your final score is <span id="final-score"></span></p>
@@ -67,7 +55,6 @@
           <input type="text" name="initial" id="initial" placeholder="¿cómo te llamas?" aria-label="initials"/>
           <button id="submit" class="btn">Submit</button> 
         </div>
-      </div>
     </div>
     
     <script src="./assets/js/script.js"></script>

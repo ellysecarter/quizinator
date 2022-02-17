@@ -61,6 +61,8 @@ hideResults();
 
 // start quiz function
 var startQuiz = function () {
+    showTimer()
+
     countdownTimer();
   
     questionChange();
@@ -85,6 +87,14 @@ function hideTimer(){
     document.getElementById("timer").style.display = "none";
 }
 
+function showTimer(){
+    document.getElementById("timer").style.display = "block";
+}
+
+function hideQuestions(){
+    document.getElementById("questions-answers").style.display = "none";
+}
+
 // timer function
 function countdownTimer() {
     var timeInterval = setInterval(function () {
@@ -105,8 +115,7 @@ function countdownTimer() {
   }
 
 
-
-// question function here
+// question change function here
 function questionChange() {
     
     var currentQuestion = questions[questionIndex];
@@ -120,15 +129,14 @@ function questionChange() {
       answer.setAttribute("value", answerText);
       answerEl.appendChild(answer);
       answer.addEventListener("click", function () {
-        // console.log(this.value);
         if (this.value == correctAnswer) {
             // alert("Good Job! You got it correct")
-        //   rightWrong.removeAttribute("hidden");
-        //   rightWrong.textContent = "Good Job! You got it correct";
+          rightWrong.removeAttribute("hidden");
+          rightWrong.textContent = "Good Job! You got it correct";
         } else {
             // alert("Sorry, that was incorrect")
-        //   rightWrong.removeAttribute("hidden");
-        //   rightWrong.textContent = "Sorry, that was incorrect";
+          rightWrong.removeAttribute("hidden");
+          rightWrong.textContent = "Sorry, that was incorrect";
           
           timeLeft -= penalty;
         }
@@ -153,10 +161,11 @@ function questionChange() {
 
 
 
-// timeLeft is showing the correct time in local storage
+// quiz is finished and shows score and enter initials
  var endQuiz = function() {
     showResults()
     hideTimer()
+    hideQuestions()
       finalScore.textContent =  timeLeft
     
       submitBtn.addEventListener("click", function(event) {
@@ -175,7 +184,7 @@ function questionChange() {
     
   }
           
-      
+// high score page  
 function scorePage() {
         location.href = "highscrores.html"
       }
