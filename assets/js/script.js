@@ -130,11 +130,9 @@ function questionChange() {
       answerEl.appendChild(answer);
       answer.addEventListener("click", function () {
         if (this.value == correctAnswer) {
-            // alert("Good Job! You got it correct")
           rightWrong.removeAttribute("hidden");
           rightWrong.textContent = "Good Job! You got it correct";
         } else {
-            // alert("Sorry, that was incorrect")
           rightWrong.removeAttribute("hidden");
           rightWrong.textContent = "Sorry, that was incorrect";
           
