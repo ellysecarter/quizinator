@@ -116,22 +116,6 @@ function countdownTimer() {
     }, 1000);
   }
 
-function correctBlink() {
-    var showCorrect = document.getElementById('show-correct');
-    setInterval(function() {
-        showCorrect.style.display = (showCorrect.style.display == 'none' ? 'Good Job! You got it correct' : 'none');
-    }, 1000);
- }
-
- function incorrectBlink() {
-    var showIncorrect = document.getElementById('show-incorrect');
-    setInterval(function() {
-        showIncorrect.style.display = (showIncorrect.style.display == 'none' ? 'Good Job! You got it correct' : 'none');
-    }, 1000);
- }
-
-
-
 // question change function here
 function questionChange() {
     
@@ -142,22 +126,26 @@ function questionChange() {
       var answer = document.createElement("button");
       answer.classList.add("answer");
       var answerText = currentQuestion.s[i];
+      console.log(answerText)
       answer.innerText = answerText;
       answer.setAttribute("value", answerText);
+
       answerEl.appendChild(answer);
       answer.addEventListener("click", function () {
         if (this.value == correctAnswer) {
-        //   rightWrong.removeAttribute("hidden");
-        //   rightWrong.textContent = "Good Job! You got it correct";
-        correctBlink()
+          rightWrong.removeAttribute("hidden");
+          rightWrong.textContent = "Good Job! You got it correct";
+        
         } else {
-        //   rightWrong.removeAttribute("hidden");
-        //   rightWrong.textContent = "Sorry, that was incorrect";
-        incorrectBlink()
+          rightWrong.removeAttribute("hidden");
+          rightWrong.textContent = "Sorry, that was incorrect";
+       
           timeLeft -= penalty;
         }
-  
-        // hide previous answers but show current ones
+        setTimeout(function(){
+            rightWrong.textContent = "";
+
+             // hide previous answers but show current ones
         let allAnswers = document.querySelectorAll(".answer");
         allAnswers[0].remove();
         allAnswers[1].remove();
@@ -171,6 +159,9 @@ function questionChange() {
         else {
           endQuiz()
         }
+        }, 500)
+
+       
       });
     }
   }

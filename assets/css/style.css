@@ -21,6 +21,11 @@ body {
     transition: all 500ms;
 }
 
+button {
+    display: block;
+    margin: 20px auto;
+}
+
 .answer {
     border: none;
 }
@@ -64,12 +69,6 @@ body {
   .right-wrong {
     padding-top: 50px;
     font-weight: bold;
-  }
-  
-  #answers {
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
   }
 
   #clear {
